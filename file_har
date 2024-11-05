@@ -1,3 +1,25 @@
-* har
-  lav
-  main
+pipeline {
+	agent any
+	environment {
+		name='Lavi'
+	}
+
+	stages {
+		stage ('Calling Variables'){
+			environment {
+				place='Lavi_my_boy'
+			}
+			steps {
+				echo "Running Job ${env.JOB_NAME} at build ID ${env.BUILD_ID} on Machine URL ${env.JENKINS_URL}"
+				echo "Hello! This is User: $name"
+				echo "He is $place"
+			}
+			}			
+		stage ('Calling Variables-1') {	
+			steps {			
+				echo "He is $place"
+				echo "Hello! This is User: $name"
+			}				
+			}
+	}
+}
