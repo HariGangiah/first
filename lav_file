@@ -1,0 +1,26 @@
+pipeline {
+	agent {label 'ag01'}
+
+	stages {
+        stage('Checkout') {
+            steps {
+                 git branch: 'main', url: 'https://github.com/HariGangiah/java-example.git'
+                  }
+            }
+		stage('Test') {
+			steps {
+				echo 'Running unit test and integration test'
+				   }
+			}			
+		stage('Build') {
+			steps {
+			    sh 'mvn clean'
+				sh 'mvn clean package'
+				  }
+			}
+		stage('Push') {
+			steps {
+				echo 'Pusing artifact to artifactory'
+			}
+		}
+	}
