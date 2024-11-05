@@ -1,7 +1,31 @@
-file
-file_har
-new_file
-README.md
+pipeline {
+	agent any
+	stages {
+		stage('Checkout') {
+			steps {
+				echo 'Running Checkout stage'
+			}
+		}
 
-New Lin to Check
-New Line for-to Check
+		stage('Test') {
+			steps {
+				echo 'Running Test stage'
+			}
+		}
+
+		stage('Build') {
+			steps {
+				echo 'Running Build stage'
+			}
+		}
+
+		stage('Deploy') {
+			steps {
+				echo 'Running Deploy stage'
+			}
+		}
+		when  {
+ 			 branch 'prod'
+		}
+}
+}
